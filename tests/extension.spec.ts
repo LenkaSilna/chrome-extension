@@ -33,6 +33,8 @@ const test = base.extend<TestFixtures>({
         `--disable-extensions-except=${pathToExtension}`,
         `--load-extension=${pathToExtension}`,
         `--no-sandbox`,
+        '--disable-gpu',
+        '--disable-dev-shm-usage',
       ],
       timeout: 60000,
     });

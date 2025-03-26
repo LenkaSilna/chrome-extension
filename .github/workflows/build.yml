@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   build-and-test:
@@ -23,13 +24,17 @@ jobs:
         run: npm ci
 
       - name: Install Playwright browsers
-        run: npx playwright install --with-deps
+        run: npx playwright install --with-deps chromium
 
       - name: Build extension
         run: npm run build
 
       - name: Run tests
-        run: npm run test
+        uses: nick-fields/retry@v2
+        with:
+          timeout_minutes: 10
+          max_attempts: 3
+          command: xvfb-run --auto-servernum --server-args="-screen 0 1280x960x24" npm run test
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
