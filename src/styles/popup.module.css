@@ -1,0 +1,258 @@
+@import './variables.css';
+
+body {
+  margin: 0;
+}
+
+.popupContainer {
+  width: 300px;
+  padding: var(--spacing-large);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  color: var(--text-normal);
+  background-color: var(--bg-white);
+}
+
+.popupTitle {
+  font-size: var(--font-large);
+  margin: 0 0 var(--spacing-large);
+  color: var(--primary-color);
+  text-align: center;
+}
+
+.popupContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-large);
+}
+
+.popupStatus {
+  padding: var(--spacing-small);
+  border-radius: 4px;
+  font-size: var(--font-normal);
+}
+
+.popupStatus.error {
+  background-color: var(--bg-error);
+  color: var(--text-error);
+}
+
+.popupStatus.success {
+  background-color: var(--bg-status);
+  color: var(--text-status);
+}
+
+.apiKeySection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-small);
+  width: 100%;
+}
+
+.apiKeySection label {
+  color: var(--text-normal);
+  font-weight: 500;
+}
+
+.apiKeyInputContainer {
+  position: relative;
+  width: 100%;
+}
+
+.apiKeyInput {
+  width: 100%;
+  padding: var(--spacing-small) var(--spacing-large) var(--spacing-small) var(--spacing-small);
+  border: 1px solid var(--border-normal);
+  border-radius: 4px;
+  font-size: var(--font-normal);
+  box-sizing: border-box;
+  color: var(--text-normal);
+  background: var(--bg-white);
+}
+
+.apiKeyInput::placeholder {
+  color: var(--text-secondary);
+}
+
+.clearButton {
+  position: absolute;
+  right: var(--spacing-small);
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: var(--font-title);
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clearButton:hover {
+  color: var(--text-normal);
+}
+
+.saveButton {
+  width: 100%;
+  padding: var(--spacing-small) var(--spacing-medium);
+  background-color: var(--primary-color);
+  color: var(--text-white);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: var(--font-normal);
+  transition: all 0.2s;
+}
+
+.saveButton:hover:not(:disabled) {
+  background-color: var(--primary-hover);
+}
+
+.saveButton:disabled {
+  background-color: var(--bg-disabled);
+  color: var(--text-secondary);
+  cursor: not-allowed;
+}
+
+.successMessage {
+  color: var(--text-success);
+  margin: 0;
+  font-size: var(--font-normal);
+}
+
+.toggleSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-medium);
+  margin-top: var(--spacing-large);
+}
+
+.toggleLabel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  font-size: var(--font-normal);
+  color: var(--text-normal);
+  font-weight: 500;
+}
+
+.toggleSwitch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  margin-left: var(--spacing-medium);
+}
+
+.toggleInput {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggleSlider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--toggle-bg);
+  transition: .4s;
+  border-radius: 20px;
+}
+
+.toggleSlider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: var(--text-white);
+  transition: .4s;
+  border-radius: 50%;
+}
+
+.toggleInput:checked + .toggleSlider {
+  background-color: var(--primary-color);
+}
+
+.toggleInput:disabled + .toggleSlider {
+  background-color: var(--toggle-disabled);
+  cursor: not-allowed;
+}
+
+.toggleInput:checked + .toggleSlider:before {
+  transform: translateX(20px);
+}
+
+@media (prefers-color-scheme: dark) {
+  .popupContainer {
+    color: var(--text-normal);
+    background-color: var(--bg-white);
+  }
+
+  .popupTitle {
+    color: var(--primary-color);
+  }
+
+  .apiKeySection label {
+    color: var(--text-normal);
+  }
+
+  .apiKeyInput {
+    background-color: var(--bg-white);
+    border-color: var(--border-normal);
+    color: var(--text-normal);
+  }
+
+  .apiKeyInput::placeholder {
+    color: var(--text-secondary);
+  }
+
+  .clearButton {
+    color: var(--text-secondary);
+  }
+
+  .clearButton:hover {
+    color: var(--text-normal);
+  }
+
+  .toggleLabel {
+    color: var(--text-normal);
+  }
+
+  .toggleSlider {
+    background-color: var(--toggle-bg);
+  }
+
+  .toggleInput:checked + .toggleSlider {
+    background-color: var(--primary-color);
+  }
+
+  .toggleInput:disabled + .toggleSlider {
+    background-color: var(--toggle-disabled);
+  }
+
+  .saveButton:disabled {
+    background-color: var(--bg-disabled);
+    color: var(--text-secondary);
+  }
+
+  .successMessage {
+    color: var(--text-success);
+  }
+
+  .popupStatus.error {
+    background-color: var(--bg-error);
+    color: var(--text-error);
+  }
+
+  .popupStatus.success {
+    background-color: var(--bg-status);
+    color: var(--text-status);
+  }
+} 

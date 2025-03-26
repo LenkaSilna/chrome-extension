@@ -1,0 +1,62 @@
+@import './variables.css';
+
+.highlightable-word {
+  background-color: var(--highlight-color);
+  color: inherit;
+  cursor: help;
+  padding: 0 2px;
+  border-radius: 2px;
+  transition: background-color 0.2s ease;
+}
+
+.highlightable-word:hover {
+  background-color: var(--highlight-color-hover);
+}
+
+#word-highlighter-tooltip {
+  position: absolute;
+  background: var(--bg-white);
+  border: 1px solid var(--border-normal);
+  border-radius: 4px;
+  padding: var(--spacing-medium);
+  max-width: 300px;
+  box-shadow: 0 2px 8px var(--shadow-normal);
+  z-index: var(--z-tooltip);
+  display: none;
+  font-size: var(--font-normal);
+  line-height: 1.5;
+  color: var(--text-normal);
+}
+
+#word-highlighter-tooltip.error {
+  background: var(--bg-error);
+  border-color: var(--border-error);
+  color: var(--text-error);
+}
+
+#word-highlighter-toggle {
+  position: fixed;
+  top: var(--spacing-large);
+  right: var(--spacing-large);
+  background-color: var(--primary-color);
+  opacity: 0.7;
+  color: var(--text-white);
+  padding: var(--spacing-small) var(--spacing-medium);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: var(--font-normal);
+  box-shadow: 0 2px 4px var(--shadow-button);
+  transition: all 0.2s;
+  z-index: var(--z-toggle);
+}
+
+#word-highlighter-toggle:hover {
+  background-color: var(--primary-hover);
+}
+
+#word-highlighter-toggle.active {
+  background: var(--bg-active);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+} 

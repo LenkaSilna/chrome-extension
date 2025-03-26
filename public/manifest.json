@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Word Highlighter",
+  "version": "1.0.0",
+  "description": "Highlights important words and provides explanations using Gemini API",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://generativelanguage.googleapis.com/"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["assets/content.js"],
+      "css": ["assets/content.css"]
+    }
+  ],
+  "background": {
+    "service_worker": "assets/background.js",
+    "type": "module",
+    "persistency": "true"
+  }
+} 

@@ -1,0 +1,89 @@
+:root {
+  /* Primary colors */
+  --primary-color: #1a73e8;
+  --primary-hover: #1557b0;
+  
+  /* Background colors */
+  --bg-white: #ffffff;
+  --bg-status: #e6f3ff;
+  --bg-error: #fee8e7;
+  --bg-active: #e8f0fe;
+  --bg-disabled: #e8eaed;
+  
+  /* Text colors */
+  --text-normal: #333333;
+  --text-white: white;
+  --text-status: #0066cc;
+  --text-success: #28a745;
+  --text-error: #dc3545;
+  --text-secondary: #5f6368;
+  
+  /* Border colors */
+  --border-normal: #ccc;
+  --border-error: #dc3545;
+  
+  /* Shadow */
+  --shadow-normal: rgba(0, 0, 0, 0.15);
+  --shadow-button: rgba(0, 0, 0, 0.2);
+  
+  /* Highlight colors */
+  --highlight-color: rgba(33, 150, 243, 0.15);
+  --highlight-color-hover: rgba(33, 150, 243, 0.3);
+  
+  /* Toggle colors */
+  --toggle-bg: #ccc;
+  --toggle-disabled: #ddd;
+  
+  /* Spacing */
+  --spacing-small: 8px;
+  --spacing-medium: 16px;
+  --spacing-large: 20px;
+  
+  /* Font sizes */
+  --font-normal: 14px;
+  --font-title: 18px;
+  --font-large: 20px;
+  
+  /* Z-index */
+  --z-tooltip: 2147483647;
+  --z-toggle: 2147483646;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Primary colors */
+    --primary-color: #8ab4f8;
+    --primary-hover: #aecbfa;
+    
+    /* Background colors */
+    --bg-white: #202124;
+    --bg-status: #1a3449;
+    --bg-error: #4a1f1f;
+    --bg-active: #1f2b3d;
+    --bg-disabled: #3c4043;
+    
+    /* Text colors */
+    --text-normal: #e8eaed;
+    --text-white: #ffffff;
+    --text-status: #8ab4f8;
+    --text-success: #81c995;
+    --text-error: #f28b82;
+    --text-secondary: #9aa0a6;
+    
+    /* Border colors */
+    --border-normal: #5f6368;
+    --border-error: #f28b82;
+    
+    /* Shadow */
+    --shadow-normal: rgba(0, 0, 0, 0.3);
+    --shadow-button: rgba(0, 0, 0, 0.4);
+    
+    /* Highlight colors */
+    --highlight-color: rgba(138, 180, 248, 0.15);
+    --highlight-color-hover: rgba(138, 180, 248, 0.3);
+    
+    /* Toggle colors */
+    --toggle-bg: #5f6368;
+    --toggle-disabled: #3c4043;
+  }
+} 

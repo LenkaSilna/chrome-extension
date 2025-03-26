@@ -1,0 +1,58 @@
+@import './variables.css';
+
+.popup-container {
+  width: 300px;
+  padding: var(--spacing-medium);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: var(--bg-white);
+  color: var(--text-normal);
+}
+
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-medium);
+}
+
+.popup-title {
+  font-size: var(--font-title);
+  margin: 0;
+  color: var(--text-normal);
+}
+
+.popup-status {
+  padding: var(--spacing-small);
+  border-radius: 4px;
+  background-color: var(--bg-status);
+  color: var(--text-status);
+}
+
+.api-key-input {
+  width: 100%;
+  padding: var(--spacing-small);
+  border: 1px solid var(--border-normal);
+  border-radius: 4px;
+  margin-top: var(--spacing-small);
+  color: var(--text-normal);
+  background-color: var(--bg-white);
+}
+
+.save-button {
+  padding: var(--spacing-small) var(--spacing-medium);
+  background-color: var(--primary-color);
+  color: var(--text-white);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: var(--font-normal);
+  transition: background-color 0.2s ease;
+}
+
+.save-button:hover {
+  background-color: var(--primary-hover);
+}
+
+.success-message {
+  color: var(--text-success);
+  margin-top: var(--spacing-small);
+} 
