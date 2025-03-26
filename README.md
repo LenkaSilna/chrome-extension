@@ -12,6 +12,17 @@ A Chrome extension that highlights important words on web pages and provides exp
 
 ## Installation
 
+### Option 1: Download from GitHub Actions
+1. Go to the GitHub repository's Actions tab
+2. Select the latest successful workflow run
+3. Download the `dist` artifact
+4. Unzip the downloaded file
+5. Load the extension in Chrome:
+   - Open Chrome and go to `chrome://extensions/`
+   - Enable "Developer mode" in the top right
+   - Click "Load unpacked" and select the unzipped `dist` directory
+
+### Option 2: Build from Source
 1. Clone this repository
 2. Install dependencies:
    ```bash
@@ -50,4 +61,4 @@ A Chrome extension that highlights important words on web pages and provides exp
 
 ## License
 
-MIT 
+MIT
