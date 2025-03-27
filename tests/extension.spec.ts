@@ -2,6 +2,8 @@ import { test as base, expect, chromium, Worker, Page } from '@playwright/test';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
+import { ExtensionPage } from './pages/ExtensionPage';
+import { WebPage } from './pages/WebPage';
 
 dotenv.config();
 
@@ -107,52 +109,29 @@ async function setupTestPage(context: TestFixtures['context'], extensionId: stri
 
 test.describe('Word Highlighter Extension', () => {
   test('popup opens and saves API key', async ({ extensionPage }) => {
-    const title = await extensionPage.locator('h1');
-    await expect(title).toHaveText('Word Highlighter');
+    const popup = new ExtensionPage(extensionPage);
     
-    const apiKeyInput = extensionPage.locator('input[type="password"]');
-    await apiKeyInput.fill(GEMINI_API_KEY);
-    const saveButton = extensionPage.locator('button._saveButton_ilpvh_96');
-    await saveButton.click();
-    
-    const savedMessage = extensionPage.locator('p').filter({ hasText: 'API key saved successfully!' });
-    await expect(savedMessage).toBeVisible();
+    await expect(popup.title).toHaveText('Word Highlighter');
+    await popup.saveApiKey(GEMINI_API_KEY);
+    await expect(popup.savedMessage).toBeVisible();
   });
 
   test('highlights words on webpage', async ({ context, extensionId }) => {
     const page = await setupTestPage(context, extensionId, GEMINI_API_KEY);
+    const webPage = new WebPage(page);
     
-    const installationWord = page.locator('h1 span.highlightable-word', { hasText: 'Installation' });
-    await installationWord.waitFor({ state: 'visible' });
+    await webPage.hoverOverWord('Installation');
     
-    await installationWord.hover();
-    
-    await page.waitForTimeout(1000);
-    
-    const tooltip = page.locator('#word-highlighter-tooltip').first();
-    await expect(tooltip).toBeVisible();
-    
-    const tooltipText = await tooltip.textContent();
+    const tooltipText = await webPage.getTooltipText();
     expect(tooltipText).toBeTruthy();
     expect(tooltipText?.length).toBeGreaterThan(0);
   });
 
   test('shows error for invalid API key', async ({ context, extensionId }) => {
     const page = await setupTestPage(context, extensionId, 'invalid-key');
+    const webPage = new WebPage(page);
     
-    const installationWord = page.locator('h1 span.highlightable-word', { hasText: 'Installation' });
-    await installationWord.waitFor({ state: 'visible' });
-    
-    await installationWord.hover();
-    
-    await page.waitForTimeout(1000);
-    
-    const tooltip = page.locator('#word-highlighter-tooltip').first();
-    await expect(tooltip).toBeVisible();
-    const tooltipText = await tooltip.textContent();
-    expect(tooltipText).toBeTruthy();
-    
-    await expect(tooltip).toBeVisible();
-    await expect(tooltip).toHaveText('API key not valid. Please pass a valid API key.');
+    await webPage.hoverOverWord('Installation');
+    await webPage.expectTooltipError('API key not valid. Please pass a valid API key.');
   });
 });
